@@ -12,10 +12,20 @@ export default function App() {
     return (
       <View style={styles.container}>
         <View style={styles.header}><Text style={styles.textHeader}>Aplicativo Anotação</Text></View>
-
-        <View><Text style={styles.anotacao}>{anotacao}</Text></View>
-
-        <TouchableOpacity onPress={()=> setarEstado('atualizando')} style={styles.btnAnotacao}><Text style={styles.btnAnotacaoText}>+</Text></TouchableOpacity>
+        {
+          (anotacao != '')?
+            <View style={{padding:20}}><Text style={styles.anotacao}>{anotacao}</Text></View>
+          :
+          <View style={{padding:20}}><Text>Nenhuma anotação encontrada</Text></View>
+        }
+        
+        {
+          (anotacao != '')?
+          <TouchableOpacity onPress={()=> setarEstado('atualizando')} style={styles.btnAnotacao}><Text style={styles.btnAnotacaoText}>Ed</Text></TouchableOpacity>
+          :
+          <TouchableOpacity onPress={()=> setarEstado('atualizando')} style={styles.btnAnotacao}><Text style={styles.btnAnotacaoText}>+</Text></TouchableOpacity>
+        }
+        
         <StatusBar style="auto" />
       </View>
     );
@@ -23,7 +33,7 @@ export default function App() {
     return (
       <View style={styles.container}>
         <View style={styles.header}><Text style={styles.textHeader}>Aplicativo Anotação</Text></View>
-
+      
         <View><Text style={styles.anotacao}>Digite sua Anotação</Text></View>
 
         <TextInput

@@ -6,14 +6,15 @@ import { useNavigate, useParams } from 'react-router-dom';
 function FeedBack(){
     const navigate = useNavigate();
     const {id} = useParams()
-    const [nome, setNome] = React.useState("");
     const [msg, setMsg] = React.useState("");
     const [ava, setAva] = React.useState();
+    const userData = localStorage.getItem("users_db")
+    const usuario = JSON.parse(userData)
 
     const createFeedback = (e) => {
         e.preventDefault();
         Api.post("/feedbacks/", {
-            feedback_name:nome,
+            feedback_name:usuario[0].username,
             meetings_id:id,
             feedback_message:msg,
             feedback_date_created:"10/10/2023",
@@ -29,8 +30,6 @@ function FeedBack(){
             <h2>FEEDBACK:</h2>
             <form onSubmit={(e) => createFeedback(e)} method='post'>
                 <div className='form-control-j'>
-                    <label htmlFor='nome_evento' >Nome: </label>
-                    <input type='text' name='nome_evento' placeholder='digite o nome do evento' onChange={(e) => setNome(e.target.value)}/>
 
                     <label htmlFor='nome_evento' >Conte nos o que vc achou?: </label>
                     <input type='text' name='data_inicio'  onChange={(e) => setMsg(e.target.value)}/>

@@ -65,7 +65,10 @@ function NewEvent() {
                     <input type='text' name='data_termino' onChange={(e) => setReuniaoLink(e.target.value)}/>
 
                     <label htmlFor='nome_evento' >Status da Reuniao: </label>
-                    <input type='text' name='data_termino' onChange={(e) => setReuniaoStatus(e.target.value)}/>
+                    <select>
+                        <option value='Aprovado'>Aprovado</option>
+                        <option value='Concluido'>Concluido</option>
+                    </select>
 
                     <input style={{marginTop: 15}}  type='submit' value='Criar' className='btn btn-primary'/>
                 </div>

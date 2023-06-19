@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {createBrowserRouter, RouterProvider, Route} from 'react-router-dom'
+import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -10,20 +10,29 @@ import Gerenciar from './routes/Gerenciar'
 import UpdateEvent from './routes/Update';
 import FeedBack from './routes/Feedback';
 import Saibamais from './routes/Saibamais';
+import Login from './routes/login';
+import Cadastro from './routes/Cadastro';
+import useAuth from './hooks/useAuth';
 
 
+const Private = ({ Item }) => {
+  const { signed } = useAuth();
 
+  return signed > 0 ? <Item /> : <Login />;
+};
 
 const router = createBrowserRouter([
   {
     element: <App/>,
     children: [
-      {path : '/', element: <Home/>},
-      {path : '/new', element: <NewEvent/>},
-      {path : '/gerenciar', element: <Gerenciar/>},
-      {path: '/meetings/:id', element: <UpdateEvent/>},
-      {path: '/feedback/:id', element: <FeedBack/>},
-      {path: '/saibamais/:id', element: <Saibamais/>}
+      {path : '/', element:<Home/> },
+      {path : '/new', element:<Private Item={NewEvent}/>},
+      {path : '/gerenciar', element:<Private Item={Gerenciar}/>},
+      {path: '/meetings/:id', element:<Private Item={UpdateEvent}/>},
+      {path: '/feedback/:id', element:<Private Item={FeedBack}/>},
+      {path: '/saibamais/:id', element: <Saibamais/>},
+      {path: '/login', element: <Login/>},
+      {path: '/cadastro', element: <Cadastro/>}
     ]
   }
 ])

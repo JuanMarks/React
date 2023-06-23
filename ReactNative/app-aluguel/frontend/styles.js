@@ -41,11 +41,12 @@ const styles = StyleSheet.create({
       btnSalvar:{
         position: 'absolute',
         right: 10,
-        bottom: -350,
+        bottom: 20,
         width: 50,
         height:50,
         backgroundColor:'#069',
-        borderRadius: 25
+        borderRadius: 25,
+        zIndex:1,
         
         
       },
@@ -67,7 +68,39 @@ const styles = StyleSheet.create({
         fontSize:16,
         bottom:25,
         borderRadius:20
+      },
+
+      botoes:{
+        marginTop:40,
+        padding: 20,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+      },
+
+      txtCasas:{
+        fontSize:20,
+        marginBottom:10,
+        
+      },
+
+      boxCasas:{
+        
+        fontWeight:'bold',
+        backgroundColor:'blue',
+        borderRadius:20,
+        marginTop:40,
+        padding: 20,
+        
+        
+      },
+
+      btnCasas:{
+        flexDirection: 'row',
+        justifyContent:'flex-end'
       }
+
+      
+    
   });
   
   export default styles;
